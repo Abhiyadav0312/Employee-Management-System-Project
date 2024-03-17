@@ -14,6 +14,7 @@ public class SignupOne extends JFrame implements ActionListener{
 	JDateChooser dateChooser;
 	JButton next;
 	JRadioButton male,female,married,unmarried,other;
+	private String formno;
 	
 
 	public SignupOne() {
@@ -173,7 +174,7 @@ public class SignupOne extends JFrame implements ActionListener{
 		
 	}
 	public void actionPerformed(ActionEvent ae) {
-		String formno = ""+ random;
+		
 		String name = nameTextField.getText();
 		String fname = fnameTextField.getText();
 		String dob = ((JTextField)dateChooser.getDateEditor().getUiComponent()).getText();
