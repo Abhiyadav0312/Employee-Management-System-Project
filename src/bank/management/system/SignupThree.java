@@ -17,7 +17,12 @@ public class SignupThree extends JFrame implements ActionListener{
         this.formno = formno;
         setTitle("NEW ACCOUNT APPLICATION FORM - PAGE 3");
     
-       
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("logo.jpg"));
+        Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel l14 = new JLabel(i3);
+        l14.setBounds(150, 0, 100, 100);
+        add(l14);
         
         l1 = new JLabel("Page 3: Account Details");
         l1.setFont(new Font("Raleway", Font.BOLD, 22));
@@ -254,13 +259,14 @@ public class SignupThree extends JFrame implements ActionListener{
                     JOptionPane.showMessageDialog(null, "Fill all the required fields");
                 }else{
                     Conn c1 = new Conn();
-                    String q1 = "insert into signup3 values('"+formno+"','"+atype+"','"+cardno+"','"+pin+"','"+facility+"')";  
+                    String q1 = "insert into signupthree values('"+formno+"','"+atype+"','"+cardno+"','"+pin+"','"+facility+"')";  
                     String q2 = "insert into login values('"+formno+"','"+cardno+"','"+pin+"')";
                     c1.s.executeUpdate(q1);
                     c1.s.executeUpdate(q2);
                     JOptionPane.showMessageDialog(null, "Card Number: " + cardno + "\n Pin:"+ pin);
                     
-                    
+                    new Deposit(pin).setVisible(true);
+                    setVisible(false);
                 }
             
             }else if(ae.getSource()==b2){
